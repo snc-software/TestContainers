@@ -11,8 +11,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\app\src\Customer.ServiceInterface\Customer.ServiceInterface.csproj" />
-      <ProjectReference Include="..\..\app\src\Customers.Domain\Customers.Domain.csproj" />
+      <ProjectReference Include="..\..\src\Customer.ServiceInterface\Customer.ServiceInterface.csproj" />
+      <ProjectReference Include="..\..\src\Customers.Domain\Customers.Domain.csproj" />
     </ItemGroup>
 
 </Project>

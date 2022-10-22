@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAuthorization();
 
 var connectionString = builder.Configuration.GetConnectionString("CustomerDb");
-builder.Services.AddScoped<IDbConnectionFactory>(_ => new DbConnectionFactory(connectionString));
+builder.Services.AddSingleton<IDbConnectionFactory>(_ => new DbConnectionFactory(connectionString));
 builder.Services.AddScoped<IPersistenceCustomerRetriever, PersistenceCustomerRetriever>();
 builder.Services.AddScoped<IPersistenceCustomerCreator, PersistenceCustomerCreator>();
 builder.Services.AddScoped<IPersistenceCustomerUpdater, PersistenceCustomerUpdater>();
@@ -40,3 +40,5 @@ if (app.Environment.IsDevelopment())
 app.MapEndpoints();
 
 app.Run();
+
+public partial class Program { }

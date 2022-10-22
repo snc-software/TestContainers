@@ -1,4 +1,3 @@
-using AutoMapper;
 using Customer.Business.Persistence.Interfaces;
 using Customers.Domain.Exceptions;
 
@@ -9,18 +8,15 @@ public class CustomerDeleterService : ICustomerDeleterService
     readonly IDbConnectionFactory _dbConnectionFactory;
     readonly IPersistenceCustomerDeleter _deleter;
     readonly IPersistenceCustomerRetriever _retriever;
-    readonly IMapper _mapper;
 
     public CustomerDeleterService(
         IDbConnectionFactory dbConnectionFactory, 
         IPersistenceCustomerDeleter deleter,
-        IPersistenceCustomerRetriever retriever, 
-        IMapper mapper)
+        IPersistenceCustomerRetriever retriever)
     {
         _dbConnectionFactory = dbConnectionFactory;
         _deleter = deleter;
         _retriever = retriever;
-        _mapper = mapper;
     }
 
     public async Task DeleteAsync(Guid id)

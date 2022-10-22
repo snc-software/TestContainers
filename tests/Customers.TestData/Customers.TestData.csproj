@@ -7,13 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="12.0.0" />
-      <PackageReference Include="FluentValidation" Version="11.2.2" />
-      <PackageReference Include="Testcontainers" Version="2.1.0" />
+      <PackageReference Include="Bogus" Version="34.0.2" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Customers.Domain\Customers.Domain.csproj" />
+      <ProjectReference Include="..\..\app\src\Customer.ServiceInterface\Customer.ServiceInterface.csproj" />
+      <ProjectReference Include="..\..\app\src\Customers.Domain\Customers.Domain.csproj" />
     </ItemGroup>
 
 </Project>

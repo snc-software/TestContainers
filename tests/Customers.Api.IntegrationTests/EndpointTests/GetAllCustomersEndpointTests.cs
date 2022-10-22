@@ -1,9 +1,3 @@
-using System.Net.Http.Json;
-using Customers.Api.IntegrationTests.Extensions;
-using Customers.Api.IntegrationTests.Infrastructure;
-using Customers.TestData;
-using FluentAssertions;
-
 namespace Customers.Api.IntegrationTests.EndpointTests;
 
 public class GetAllCustomersEndpointTests : IntegrationTestBase
@@ -42,7 +36,9 @@ public class GetAllCustomersEndpointTests : IntegrationTestBase
     {
         foreach (var customer in _customers)
         {
-            var created = await _client.CreateCustomer(customer);
+            var createdResponse = await _client.CreateCustomer(customer);
+            createdResponse.IsSuccessStatusCode.Should().BeTrue();
+            var created = await createdResponse.Content.ReadFromJsonAsync<Contracts.Customer>();
             _createdCustomers.Add(created);
         }
     }

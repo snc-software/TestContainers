@@ -1,10 +1,5 @@
 using System.Net;
-using System.Net.Http.Json;
 using Customer.ServiceInterface.Responses;
-using Customers.Api.IntegrationTests.Extensions;
-using Customers.Api.IntegrationTests.Infrastructure;
-using Customers.TestData;
-using FluentAssertions;
 
 namespace Customers.Api.IntegrationTests.EndpointTests;
 
@@ -23,7 +18,9 @@ public class GetCustomerByIdEndpointTests : IntegrationTestBase
     [Fact]
     public async Task GetByIdReturnsTheExpectedCustomer()
     {
-        var created = await _client.CreateCustomer(_customer);
+        var createdResponse = await _client.CreateCustomer(_customer);
+        createdResponse.IsSuccessStatusCode.Should().BeTrue();
+        var created = await createdResponse.Content.ReadFromJsonAsync<Contracts.Customer>();
 
         var response = await _client.GetAsync($"/customers/{created.Id}");
 
